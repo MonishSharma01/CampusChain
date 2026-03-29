@@ -1,26 +1,155 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* CampusChain Brand Colors */
+  --primary-yellow: #F5C518;
+  --bright-accent-yellow: #FFD700;
+  --soft-yellow-tint: #FFFDE7;
+  --warm-yellow-mist: #FFF9C4;
+  --pure-white: #FFFFFF;
+  --deep-charcoal: #1A1A2E;
+  --dark-navy: #16213E;
+  --muted-gray: #6B7280;
+  --light-border-gray: #E5E7EB;
+  --success-green: #10B981;
+  --alert-red: #EF4444;
+  --info-blue: #3B82F6;
+
+  /* Theme Mappings */
+  --background: var(--pure-white);
+  --foreground: var(--deep-charcoal);
+  
+  /* Chart Colors */
+  --chart-1: var(--primary-yellow);
+  --chart-2: var(--dark-navy);
+  --chart-3: var(--success-green);
+  --chart-4: var(--info-blue);
+  --chart-5: #F97316;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary-yellow: var(--primary-yellow);
+  --color-bright-accent-yellow: var(--bright-accent-yellow);
+  --color-soft-yellow-tint: var(--soft-yellow-tint);
+  --color-warm-yellow-mist: var(--warm-yellow-mist);
+  --color-deep-charcoal: var(--deep-charcoal);
+  --color-dark-navy: var(--dark-navy);
+  --color-muted-gray: var(--muted-gray);
+  --color-light-border-gray: var(--light-border-gray);
+  --color-success-green: var(--success-green);
+  --color-alert-red: var(--alert-red);
+  --color-info-blue: var(--info-blue);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-heading: var(--font-space-grotesk), ui-serif, Georgia;
+  --font-mono: var(--font-space-grotesk), monospace;
+
+  --radius-xl: 16px;
+  --radius-lg: 10px;
+
+  --shadow-yellow: 0 4px 24px rgba(245, 197, 24, 0.08);
+  --shadow-yellow-lg: 0 10px 40px rgba(245, 197, 24, 0.15);
+
+  --animate-fade-in-up: fade-in-up 0.3s ease-out;
+  --animate-pulse-live: pulse-yellow 2s infinite;
+  --animate-shimmer: shimmer 2s infinite linear;
+
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-yellow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(245, 197, 24, 0); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
   }
 }
 
+/* Global Transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+  @apply antialiased;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-space-grotesk);
+}
+
+/* Interactive Utility Classes */
+
+.card-base {
+  background-color: var(--pure-white);
+  border: 1px solid var(--light-border-gray);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-yellow);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: var(--primary-yellow);
+    box-shadow: var(--shadow-yellow-lg);
+  }
+}
+
+.stat-card {
+  /* Inherit from card-base manually to avoid Tailwind 4 @apply limitations */
+  background-color: var(--pure-white);
+  border: 1px solid var(--light-border-gray);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-yellow);
+  transition: all 0.2s ease;
+  border-left: 4px solid var(--primary-yellow);
+
+  &:hover {
+    border-color: var(--primary-yellow);
+    box-shadow: var(--shadow-yellow-lg);
+  }
+}
+
+.token-amount {
+  @apply font-heading font-extrabold text-[#F5C518];
+}
+
+.btn-primary {
+  @apply bg-primary-yellow text-deep-charcoal font-semibold py-3 px-6 rounded-lg 
+         hover:bg-bright-accent-yellow hover:scale-[1.02] hover:shadow-[0_0_15px_rgba(245,197,24,0.4)]
+         active:scale-[0.98] transition-all duration-200;
+}
+
+.btn-secondary {
+  @apply bg-transparent border-2 border-primary-yellow text-primary-yellow font-semibold py-3 px-6 rounded-lg
+         hover:bg-soft-yellow-tint transition-all duration-200;
+}
+
+.input-field {
+  @apply bg-[#FAFAFA] border border-light-border-gray rounded-lg py-3 px-4 text-sm text-[#374151]
+         focus:outline-none focus:border-primary-yellow focus:ring-4 focus:ring-primary-yellow/15
+         placeholder:text-[#9CA3AF] transition-all duration-200;
+}
+
+.badge-success { @apply bg-[#D1FAE5] text-[#065F46] px-2 py-1 rounded inline-flex items-center gap-1.5 text-xs; }
+.badge-pending { @apply bg-[#FEF3C7] text-[#92400E] px-2 py-1 rounded inline-flex items-center gap-1.5 text-xs; }
+.badge-failed { @apply bg-[#FEE2E2] text-[#991B1B] px-2 py-1 rounded inline-flex items-center gap-1.5 text-xs; }
+
+.skeleton {
+  @apply bg-gradient-to-r from-warm-yellow-mist to-soft-yellow-tint animate-shimmer;
+  background-size: 1000px 100%;
+}
+
+/* Recharts Customization */
+.recharts-tooltip-wrapper {
+  @apply rounded-lg overflow-hidden shadow-lg;
+}
+.recharts-default-tooltip {
+  @apply !bg-deep-charcoal !border-primary-yellow !rounded-lg !p-3 !text-white !font-sans !text-xs !shadow-lg;
 }
