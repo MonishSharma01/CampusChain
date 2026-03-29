@@ -1,9 +1,9 @@
 export const student = {
-  name: "Arjun Mehta",
+  name: "Indresh Suresh",
   id: "CS2022047",
   department: "Computer Science",
   semester: 6,
-  avatar: "AM",
+  avatar: "IS",
   balance: 1240,
   semesterAllocation: 2000,
   semesterStart: "Jan 2026",
@@ -16,8 +16,8 @@ export const transactions = [
   { id:"tx003", category:"reward",   title:"Hackathon Winner Bonus",      amount:+200, time:"Yesterday",        hash:"0x2b9e...441d", status:"success" },
   { id:"tx004", category:"events",   title:"TechFest Entry",              amount:-50,  time:"Mar 27",           hash:"0x7f3b...c82e", status:"success" },
   { id:"tx005", category:"fees",     title:"Lab Fee Q2",                  amount:-300, time:"Mar 25",           hash:"0x1a4d...9f7b", status:"success" },
-  { id:"tx006", category:"transfer", title:"Sent to Priya Sharma",        amount:-80,  time:"Mar 24",           hash:"0x3c8f...d10e", status:"success" },
-  { id:"tx007", category:"transfer", title:"Received from Rohan Nair",    amount:+50,  time:"Mar 23",           hash:"0x9e2a...c44f", status:"success" },
+  { id:"tx006", category:"transfer", title:"Sent to Divya Sharma",        amount:-80,  time:"Mar 24",           hash:"0x3c8f...d10e", status:"success" },
+  { id:"tx007", category:"transfer", title:"Received from Monish Sharma", amount:+50,  time:"Mar 23",           hash:"0x9e2a...c44f", status:"success" },
   { id:"tx008", category:"canteen",  title:"Breakfast",                   amount:-30,  time:"Mar 22",           hash:"0x6b1d...a73c", status:"success" },
 ]
 
@@ -46,9 +46,9 @@ export const categoryBreakdown = [
 ]
 
 export const friends = [
-  { id:"CS2022031", name:"Priya Sharma",  avatar:"PS", dept:"CSE"  },
-  { id:"EC2022018", name:"Rohan Nair",    avatar:"RN", dept:"ECE"  },
-  { id:"ME2022055", name:"Ananya Singh",  avatar:"AS", dept:"Mech" },
+  { id:"CS2022031", name:"Divya Sharma",   avatar:"DS", dept:"CSE"  },
+  { id:"EC2022018", name:"Ankita Rajbhar", avatar:"AR", dept:"ECE"  },
+  { id:"ME2022055", name:"Monish Sharma",  avatar:"MS", dept:"Mech" },
 ]
 
 export const rewards = [

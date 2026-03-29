@@ -31,20 +31,33 @@ export default function HomePage() {
         <h1 className="text-2xl font-heading font-extrabold text-deep-charcoal">{student.name.split(' ')[0]} 👋</h1>
       </div>
 
-      {/* Balance Hero Card */}
+      {/* Premium Glassmorphism Balance Hero Card */}
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="relative bg-deep-charcoal rounded-3xl p-8 text-white overflow-hidden shadow-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative bg-deep-charcoal rounded-[2.5rem] p-8 text-white overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] border border-white/10 group"
       >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-primary-yellow/10 rounded-full blur-3xl -mr-16 -mt-16" />
+        {/* Animated Background Gradients */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary-yellow/10 rounded-full blur-[80px] -mr-32 -mt-32 animate-pulse" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/10 rounded-full blur-[60px] -ml-24 -mb-24" />
         
-        <p className="text-white/60 text-sm font-medium">Available Balance</p>
-        <div className="mt-2 flex items-baseline gap-2">
-          <span className="text-4xl font-heading font-extrabold text-primary-yellow">
-            <CountUp end={student.balance} duration={2} separator="," />
-          </span>
-          <span className="text-xl font-heading font-bold text-white/40">CC</span>
+        <div className="relative z-10">
+          <div className="flex justify-between items-start">
+            <div className="space-y-1">
+              <p className="text-white/40 text-[10px] font-black uppercase tracking-[0.2em]">Personal Wallet</p>
+              <h3 className="text-white/80 text-sm font-bold">Campus Token Balance</h3>
+            </div>
+            <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center border border-white/10 hover:bg-white/10 transition-all hover:scale-110">
+              <ArrowUpRight className="text-primary-yellow" size={24} />
+            </div>
+          </div>
+
+          <div className="mt-8 flex items-baseline gap-3">
+            <span className="text-5xl font-heading font-black text-primary-yellow tracking-tighter drop-shadow-[0_0_20px_rgba(245,197,24,0.4)]">
+              <CountUp end={student.balance} duration={2.5} separator="," />
+            </span>
+            <span className="text-lg font-heading font-black text-white/20 uppercase tracking-[0.3em]">CC</span>
+          </div>
         </div>
 
         <div className="mt-8 space-y-4">

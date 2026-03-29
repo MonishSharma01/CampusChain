@@ -36,46 +36,63 @@ export default function QRPage() {
         {state === 'SCANNER' && (
           <motion.div
             key="scanner"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="flex-1 flex flex-col items-center justify-center space-y-8"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="flex-1 flex flex-col items-center justify-center space-y-12"
           >
-            <div className="text-center space-y-2">
-              <h1 className="text-2xl font-heading font-extrabold text-deep-charcoal">Quick Pay</h1>
-              <p className="text-muted-gray text-xs font-bold uppercase tracking-widest">Scan Admin QR to Pay Tokens</p>
-            </div>
-
-            {/* Viewfinder Container */}
-            <div className="relative w-72 h-72">
-              {/* Corner Brackets */}
-              <div className="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-primary-yellow rounded-tl-3xl" />
-              <div className="absolute top-0 right-0 w-12 h-12 border-t-4 border-r-4 border-primary-yellow rounded-tr-3xl" />
-              <div className="absolute bottom-0 left-0 w-12 h-12 border-b-4 border-l-4 border-primary-yellow rounded-bl-3xl" />
-              <div className="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-primary-yellow rounded-br-3xl" />
-              
-              {/* Animated Scanning Line */}
-              <motion.div
-                animate={{ top: ['10%', '90%'] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                className="absolute left-4 right-4 h-1 bg-gradient-to-r from-transparent via-primary-yellow to-transparent shadow-[0_0_15px_rgba(245,197,24,0.8)] z-10"
-              />
-
-              {/* Background Dim */}
-              <div className="absolute inset-4 bg-deep-charcoal/5 rounded-2xl flex items-center justify-center">
-                <QrCode className="w-24 h-24 text-primary-yellow/20" />
+            <div className="text-center space-y-3">
+              <div className="inline-flex items-center gap-2 bg-primary-yellow/10 text-primary-yellow px-4 py-1.5 rounded-full border border-primary-yellow/20">
+                <Zap size={14} className="fill-current" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Contactless Payment</span>
               </div>
+              <h1 className="text-4xl font-heading font-black text-deep-charcoal tracking-tight">Quick Pay</h1>
+              <p className="text-muted-gray text-xs font-bold uppercase tracking-widest opacity-60">Scan Merchant QR to Proceed</p>
             </div>
 
-            <p className="text-muted-gray text-xs font-medium animate-pulse">Align QR code within the frame</p>
+            {/* Simple Circular Viewfinder Container */}
+            <div className="relative w-72 h-72 flex items-center justify-center">
+              {/* Static Outer Ring with Subtle Pulse */}
+              <motion.div 
+                animate={{ scale: [1, 1.02, 1], opacity: [0.1, 0.2, 0.1] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 border border-primary-yellow rounded-full"
+              />
+              
+              {/* The Viewfinder Circle */}
+              <div className="relative w-64 h-64 rounded-full border-[3px] border-primary-yellow/30 bg-deep-charcoal/5 flex items-center justify-center shadow-inner">
+                {/* Subtle Glow */}
+                <div className="absolute inset-0 rounded-full shadow-[inset_0_0_30px_rgba(245,197,24,0.1)]" />
+                
+                <QrCode className="w-20 h-20 text-primary-yellow/30" />
+                
+                {/* Minimal Center Target */}
+                <div className="absolute w-1.5 h-1.5 bg-primary-yellow rounded-full" />
+              </div>
 
-            <button
-              onClick={handleSimulateScan}
-              className="btn-primary w-full max-w-xs h-14 flex items-center justify-center gap-3 shadow-xl"
-            >
-              <Zap size={20} />
-              SIMULATE SCAN
-            </button>
+              {/* Minimal Corner Brackets */}
+              <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-primary-yellow rounded-tl-2xl" />
+              <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 border-primary-yellow rounded-tr-2xl" />
+              <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-primary-yellow rounded-bl-2xl" />
+              <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-primary-yellow rounded-br-2xl" />
+            </div>
+
+            <div className="flex flex-col items-center gap-4 w-full px-6">
+              <div className="flex items-center gap-2 text-muted-gray/40">
+                <div className="w-1.5 h-1.5 bg-primary-yellow rounded-full animate-ping" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-deep-charcoal/60">Ready to Scan</span>
+              </div>
+
+              <button
+                onClick={handleSimulateScan}
+                className="btn-primary w-full max-w-xs h-16 flex items-center justify-center gap-3 shadow-[0_15px_30px_rgba(245,197,24,0.3)] group"
+              >
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform">
+                  <Zap size={20} className="fill-white" />
+                </div>
+                <span className="font-black tracking-tight">SIMULATE PAY</span>
+              </button>
+            </div>
           </motion.div>
         )}
 
