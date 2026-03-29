@@ -26,15 +26,9 @@ export default function HomePage() {
   return (
     <div className="space-y-8 animate-fade-in-up">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h2 className="text-muted-gray text-xs font-semibold uppercase tracking-wider">{greeting()}</h2>
-          <h1 className="text-2xl font-heading font-extrabold text-deep-charcoal">{student.name.split(' ')[0]} 👋</h1>
-        </div>
-        <button className="relative p-2 bg-warm-yellow-mist rounded-xl text-deep-charcoal hover:bg-primary-yellow transition-colors">
-          <Bell size={20} />
-          <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 border-2 border-warm-yellow-mist rounded-full" />
-        </button>
+      <div>
+        <h2 className="text-muted-gray text-xs font-semibold uppercase tracking-wider">{greeting()}</h2>
+        <h1 className="text-2xl font-heading font-extrabold text-deep-charcoal">{student.name.split(' ')[0]} 👋</h1>
       </div>
 
       {/* Balance Hero Card */}
@@ -101,9 +95,9 @@ export default function HomePage() {
       {/* Spending Trend Chart */}
       <div className="card-base">
         <h3 className="text-sm font-heading font-bold text-deep-charcoal mb-6">Spending Trend</h3>
-        <div className="h-48 w-full -ml-4">
+        <div className="h-48 w-full -ml-4" tabIndex={-1} style={{ outline: 'none' }}>
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={weeklySpending} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+            <AreaChart data={weeklySpending} margin={{ top: 10, right: 10, left: 0, bottom: 0 }} style={{ outline: 'none' }}>
               <defs>
                 <linearGradient id="colorSpend" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#F5C518" stopOpacity={0.3}/>
@@ -136,9 +130,9 @@ export default function HomePage() {
       {/* Category Breakdown */}
       <div className="card-base flex flex-col items-center">
         <h3 className="w-full text-sm font-heading font-bold text-deep-charcoal mb-6">Category Breakdown</h3>
-        <div className="h-48 w-full relative">
+        <div className="h-48 w-full relative" tabIndex={-1} style={{ outline: 'none' }}>
           <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
+            <PieChart style={{ outline: 'none' }}>
               <Pie
                 data={categoryBreakdown}
                 cx="50%"
@@ -150,7 +144,7 @@ export default function HomePage() {
                 animationDuration={1000}
               >
                 {categoryBreakdown.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
+                  <Cell key={`cell-${index}`} fill={entry.color} style={{ outline: 'none' }} />
                 ))}
               </Pie>
             </PieChart>

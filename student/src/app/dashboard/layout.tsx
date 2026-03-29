@@ -3,10 +3,11 @@
 import React, { useState, useEffect } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Home, History, QrCode, Send, User } from 'lucide-react'
+import { Home, History, QrCode, Send, User, Bell } from 'lucide-react'
 import Lottie from 'lottie-react'
 import clsx from 'clsx'
 import loadingAnimation from '@/animations/loading.json'
+import { student } from './mockData'
 
 const NAV_ITEMS = [
   { label: 'Home', icon: Home, path: '/dashboard/home' },
@@ -20,9 +21,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname()
   const router = useRouter()
   const [loading, setLoading] = useState(true)
-  const [internalPath, setInternalPath] = useState(pathname)
 
-  // Global 3-second loading effect on mount and route change
+  const initials = student.name.split(' ').map(n => n[0]).join('').slice(0, 2)
+
+  // Global 3-second loading effect on route change
   useEffect(() => {
     setLoading(true)
     const timer = setTimeout(() => {
@@ -32,50 +34,77 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, [pathname])
 
   return (
-    <div className="relative min-h-screen bg-white">
-      {/* Global Loading Overlay */}
-      <AnimatePresence>
-        {loading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white"
-          >
-            <div className="w-48 h-48">
-              <Lottie animationData={loadingAnimation} loop={true} />
-            </div>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mt-4 font-heading text-lg font-bold text-primary-yellow animate-pulse"
-            >
-              Syncing Blockchain...
-            </motion.p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="relative flex flex-col h-screen overflow-hidden bg-white">
+      {/* Premium Top Bar */}
+      <header className="sticky top-0 z-40 h-14 bg-deep-charcoal border-b border-white/10 flex items-center justify-between px-4 backdrop-blur-md bg-opacity-95">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-primary-yellow rounded-lg flex items-center justify-center">
+            <div className="w-4 h-4 border-2 border-deep-charcoal rounded-sm rotate-45" />
+          </div>
+          <span className="text-primary-yellow font-heading font-semibold text-lg tracking-tight">
+            CampusChain
+          </span>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <button className="p-2 text-white/60 hover:text-primary-yellow transition-colors relative">
+            <Bell size={20} />
+            <span className="absolute top-2 right-2 w-2 h-2 bg-primary-yellow rounded-full border-2 border-deep-charcoal" />
+          </button>
+          <div className="w-8 h-8 rounded-full bg-primary-yellow text-deep-charcoal text-xs font-bold flex items-center justify-center shadow-lg border border-white/10">
+            {initials}
+          </div>
+        </div>
+      </header>
 
-      {/* Main Content Area */}
-      <main className="pb-24 pt-4 px-6 md:px-8 max-w-[430px] mx-auto min-h-screen">
-        <AnimatePresence mode="wait">
-          {!loading && (
+      {/* Main Content Area with Scoped Loading */}
+      <div className="flex-1 relative overflow-hidden bg-[#FAFAFA]">
+        {/* Scoped Loading Overlay */}
+        <AnimatePresence>
+          {loading && (
             <motion.div
-              key={pathname}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-white/95 backdrop-blur-sm"
             >
-              {children}
+              <div className="w-40 h-40">
+                <Lottie animationData={loadingAnimation} loop={true} />
+              </div>
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-2 font-heading text-sm font-bold text-deep-charcoal/40 uppercase tracking-widest animate-pulse"
+              >
+                Loading...
+              </motion.p>
             </motion.div>
           )}
         </AnimatePresence>
-      </main>
 
-      {/* Sticky Bottom Nav Bar */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 flex justify-center pb-6 pointer-events-none">
-        <div className="bg-deep-charcoal w-[90%] max-w-[400px] h-16 rounded-2xl flex items-center justify-around px-2 relative shadow-2xl pointer-events-auto">
+        {/* Scrollable Page Content */}
+        <div className="h-full overflow-y-auto pb-24 custom-scrollbar">
+          <main className="max-w-[430px] mx-auto px-6 py-6">
+            <AnimatePresence mode="wait">
+              {!loading && (
+                <motion.div
+                  key={pathname}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {children}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </main>
+        </div>
+      </div>
+
+      {/* Persistent Bottom Nav Bar */}
+      <nav className="absolute bottom-0 left-0 right-0 z-40 flex justify-center pb-6 pointer-events-none">
+        <div className="bg-deep-charcoal w-[92%] max-w-[400px] h-16 rounded-2xl flex items-center justify-around px-2 relative shadow-2xl pointer-events-auto border border-white/5">
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.path
             const Icon = item.icon
@@ -89,7 +118,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 >
                   <div className="absolute inset-0 bg-primary-yellow rounded-full animate-ping opacity-20 scale-150" />
                   <div className={clsx(
-                    "w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-transform active:scale-90 z-10",
+                    "w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all active:scale-90 z-10 border-4 border-white",
                     isActive ? "bg-bright-accent-yellow" : "bg-primary-yellow"
                   )}>
                     <Icon className="w-8 h-8 text-deep-charcoal" />

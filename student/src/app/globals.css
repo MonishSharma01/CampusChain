@@ -153,3 +153,13 @@ h1, h2, h3, h4, .font-heading {
 .recharts-default-tooltip {
   @apply !bg-deep-charcoal !border-primary-yellow !rounded-lg !p-3 !text-white !font-sans !text-xs !shadow-lg;
 }
+
+.recharts-wrapper,
+.recharts-wrapper svg,
+.recharts-surface,
+.recharts-pie-sector:focus,
+.recharts-sector:focus,
+path:focus {
+  outline: none !important;
+  border: none !important;
+}
