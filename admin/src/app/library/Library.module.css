@@ -1,0 +1,177 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.mainCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.sideCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background-color: #fafafa;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text-dark);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th {
+  padding: 1rem 1.5rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table td {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.boldCell {
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.bookCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-dark);
+}
+
+.bookIcon {
+  color: var(--color-text-muted);
+}
+
+.dateCell {
+  color: var(--color-text-muted);
+  font-family: monospace;
+}
+
+.lateRow {
+  background-color: #fffbfa;
+}
+
+.lateRow td {
+  border-bottom-color: #fee2e2;
+}
+
+.fineDisplay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fee2e2;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-flex;
+}
+
+.fineAmount {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #b91c1c;
+}
+
+.noFine {
+  color: var(--color-text-muted);
+  padding-left: 1rem;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  background-color: #dc2626;
+  border-radius: 50%;
+  animation: pulseFine 1s infinite alternate;
+}
+
+@keyframes pulseFine {
+  from { opacity: 0.4; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+.alertCard {
+  background-color: #1A1A2E;
+  color: var(--color-base);
+}
+
+.alertHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.alertHeader h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.alertText {
+  color: #a0aec0;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.statBox {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}

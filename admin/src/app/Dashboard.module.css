@@ -1,0 +1,197 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.chartsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.subChartsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.feedColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.chartCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-dark);
+}
+
+.chartWrapper {
+  height: 300px;
+  width: 100%;
+}
+
+.chartWrapperSmall {
+  height: 200px;
+  width: 100%;
+  position: relative;
+}
+
+.radialText {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  fill: var(--color-text-dark);
+}
+
+.feedCard {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.feedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pulseIndicator {
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(245, 197, 24, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(245, 197, 24, 0); }
+}
+
+.txList {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.txItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--color-background);
+  transition: all 0.3s ease;
+}
+
+.txInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.txName {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.txTime {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.txAmount {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+  min-width: 70px;
+  text-align: right;
+}
+
+.blockchainCard {
+  background-color: var(--color-text-dark);
+}
+
+.blockchainCard .cardTitle {
+  color: var(--color-base);
+}
+
+.networkStats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.networkStat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  text-transform: uppercase;
+}
+
+.statValue {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-base);
+  font-weight: 600;
+}
+
+.statHash {
+  font-family: monospace;
+  color: var(--color-primary);
+  word-break: break-all;
+}
+
+.statStatus {
+  color: #10b981;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dotPulse {
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}

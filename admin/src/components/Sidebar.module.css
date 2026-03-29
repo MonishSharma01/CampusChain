@@ -1,0 +1,94 @@
+.sidebar {
+  width: 260px;
+  background-color: var(--color-text-dark);
+  color: #a0aec0;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoContainer {
+  padding: 0 1.5rem 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-dark);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.logoText {
+  color: var(--color-base);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.logoText span {
+  font-size: 0.8rem;
+  color: var(--color-primary);
+  font-weight: 400;
+  font-family: var(--font-body);
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.navItem:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-base);
+}
+
+.navItem.active {
+  background-color: rgba(245, 197, 24, 0.1);
+  color: var(--color-primary);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.activeIndicator {
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 24px;
+  background-color: var(--color-primary);
+  border-radius: 4px 0 0 4px;
+}

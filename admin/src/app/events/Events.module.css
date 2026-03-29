@@ -1,0 +1,161 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.eventCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageHeader {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+.feeTag {
+  align-self: flex-start;
+  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(245, 197, 24, 0.4);
+}
+
+.soldOutTag {
+  align-self: flex-end;
+  background-color: #ef4444;
+  color: white;
+  font-weight: 800;
+  font-size: 1.25rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transform: rotate(-5deg);
+  border: 4px solid white;
+}
+
+.eventBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eventName {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-text-dark);
+}
+
+.eventMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.seatsContainer {
+  background-color: #fafafa;
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+}
+
+.seatsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.seatsLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.seatsNumbers {
+  font-family: var(--font-heading);
+  color: var(--color-text-muted);
+}
+
+.seatsNumbers strong {
+  color: var(--color-text-dark);
+  font-size: 1.25rem;
+}
+
+.progressBarBg {
+  width: 100%;
+  height: 12px;
+  background-color: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 999px;
+  transition: width 1s ease-out;
+  position: relative;
+}
+
+.progressBarFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shine 2s infinite;
+}
+
+.progressFull {
+  background-color: #10b981;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

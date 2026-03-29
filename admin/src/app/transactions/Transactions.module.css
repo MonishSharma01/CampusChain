@@ -1,0 +1,205 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.tableCard {
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background-color: #fafafa;
+}
+
+.searchBox {
+  position: relative;
+  width: 350px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 10px 10px 38px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.2);
+}
+
+.filterBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filterIcon {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.filterSelect {
+  padding: 10px 32px 10px 38px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: var(--color-base);
+  cursor: pointer;
+  appearance: none;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th {
+  padding: 1rem 1.5rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--color-border);
+  background-color: #fafafa;
+}
+
+.row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.row:hover {
+  background-color: var(--color-soft-yellow);
+}
+
+.rowExpanded {
+  background-color: rgba(245, 197, 24, 0.05);
+  border-bottom: none;
+}
+
+.table td {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.chevronCell {
+  width: 40px;
+  color: var(--color-text-muted);
+}
+
+.boldCell {
+  font-weight: 600;
+}
+
+.monoCell {
+  font-family: monospace;
+  color: var(--color-text-muted);
+}
+
+.amountCell {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.timeCell {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.expandedContentRow td {
+  padding: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.expandedContent {
+  background-color: #1A1A2E;
+  padding: 2rem;
+  color: var(--color-base);
+  box-shadow: inset 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detailLabel {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  text-transform: uppercase;
+}
+
+.detailValueMono {
+  font-family: monospace;
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  word-break: break-all;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.detailValue {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.detailValueSuccess {
+  color: #10b981;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.emptyTable {
+  text-align: center;
+  padding: 3rem !important;
+  color: var(--color-text-muted);
+}
